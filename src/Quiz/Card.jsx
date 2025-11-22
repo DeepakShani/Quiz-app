@@ -1,19 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-export default function QuestionCard({
-  question,
-  options,
-  correctAnswer,
-  currentQ,
-  totalQ,
-  onAnswer
-}) {
+function QuestionCard({ question, options, correctAnswer, currentQ, totalQ, onAnswer }) {
   const [selected, setSelected] = useState(null);
   const [locked, setLocked] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
 
   useEffect(() => {
-    // reset local state when question changes
+    // Reset local animations when question changes
     setSelected(null);
     setLocked(false);
     setShowFeedback(false);
@@ -25,7 +18,7 @@ export default function QuestionCard({
     setLocked(true);
     setShowFeedback(true);
 
-    // Wait a bit so user sees color feedback, then tell parent
+    // After short feedback delay notify parent
     setTimeout(() => {
       onAnswer(opt);
     }, 700);
@@ -39,7 +32,7 @@ export default function QuestionCard({
   };
 
   return (
-    <div className="question-card-decor">
+    <div className="question-card-decor fade-up">
       <div className="q-top">
         <div className="q-meta">Question {currentQ + 1} of {totalQ}</div>
         <div className="q-bubble">Tip: read carefully ✨</div>
@@ -56,7 +49,7 @@ export default function QuestionCard({
             disabled={locked}
             type="button"
           >
-            <span className="opt-letter">{opt.split(".")[0]}.</span>
+            <span className="opt-letter">{opt.split(".")[0]}</span>
             <span className="opt-text">{opt.replace(/^[A-D]\.\s*/, "")}</span>
             <span className="opt-check" aria-hidden>
               {showFeedback && opt === correctAnswer ? "✓" : ""}
@@ -68,3 +61,5 @@ export default function QuestionCard({
     </div>
   );
 }
+
+export default QuestionCard;
