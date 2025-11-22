@@ -1,0 +1,337 @@
+/* styles.css — Decorative UI for Quiz App
+   Drop into src/ and ensure App.jsx imports "./styles.css" */
+
+:root{
+  --bg: linear-gradient(180deg, #f7fbff 0%, #eef6ff 100%);
+  --card-bg: rgba(255,255,255,0.85);
+  --glass: rgba(255,255,255,0.65);
+  --accent: #5b9cff;
+  --accent-dark: #2b6ef6;
+  --muted: #6b7280;
+  --success: #16a34a;
+  --danger: #ef4444;
+  --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  --radius-lg: 18px;
+}
+
+/* Page layout */
+.decor-app {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 36px 20px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+.decor-container {
+  width: 100%;
+  max-width: 920px;
+  background: radial-gradient(1200px 200px at 10% 0%, rgba(91,156,255,0.06), transparent),
+              linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.95));
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(20, 40, 80, 0.035);
+  backdrop-filter: blur(6px);
+}
+
+/* Header */
+.decor-header {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.logo-badge {
+  min-width: 56px;
+  min-height: 56px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color: white;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 18px;
+  box-shadow: 0 8px 20px rgba(91,156,255,0.18);
+}
+
+.title-wrap {
+  flex: 1;
+}
+
+.decor-title {
+  margin: 0;
+  font-size: 20px;
+  color: #072340;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.decor-sub {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Score badge */
+.score-badge {
+  text-align: right;
+  min-width: 84px;
+}
+.score-label {
+  font-size: 12px;
+  color: var(--muted);
+}
+.score-count {
+  margin-top: 2px;
+  background: linear-gradient(90deg, #fff, rgba(255,255,255,0.6));
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-weight: 700;
+  color: #0f172a;
+  box-shadow: 0 6px 16px rgba(11, 28, 50, 0.06);
+}
+
+/* Progress bar */
+.progress-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(11,28,50,0.06), rgba(11,28,50,0.03));
+  margin: 16px 0 20px;
+  overflow: hidden;
+  position: relative;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #7cc1ff, #547bff);
+  border-radius: 999px;
+  transition: width 360ms cubic-bezier(.2,.9,.2,1);
+  box-shadow: 0 6px 18px rgba(84,123,255,0.18);
+}
+
+/* Card area */
+.card-area {
+  min-height: 300px;
+}
+
+/* Question card decorative */
+.question-card-decor {
+  background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,255,255,0.85));
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid rgba(11,28,50,0.04);
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+.question-card-decor:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(15,23,42,0.08); }
+
+.q-top {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.q-meta { color: var(--muted); font-size: 13px; }
+.q-bubble {
+  font-size: 12px;
+  background: linear-gradient(90deg, rgba(91,156,255,0.12), rgba(84,123,255,0.06));
+  border-radius: 999px;
+  padding: 6px 10px;
+  color: #1e3a8a;
+  box-shadow: 0 4px 12px rgba(84,123,255,0.06);
+}
+
+/* Question text */
+.q-text {
+  font-size: 18px;
+  color: #04263b;
+  font-weight: 600;
+  margin: 10px 0 16px;
+  line-height: 1.45;
+}
+
+/* Options grid */
+.options-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* Option base */
+.option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(11,28,50,0.06);
+  background: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(6, 18, 40, 0.04);
+}
+.option:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(6,18,40,0.06); }
+.option:active { transform: translateY(-2px); }
+
+/* default look */
+.option-default { background: linear-gradient(180deg,#fff,#fbfeff); }
+.option-faded { opacity: 0.75; filter: grayscale(10%); }
+
+/* letter pill */
+.opt-letter {
+  flex-shrink:0;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  font-weight: 700;
+  color: #0f172a;
+  background: linear-gradient(180deg, rgba(91,156,255,0.08), rgba(91,156,255,0.03));
+  border: 1px solid rgba(91,156,255,0.06);
+}
+
+/* option text */
+.opt-text { flex: 1; color: #0b2540; }
+
+/* check / cross icon */
+.opt-check {
+  min-width: 28px;
+  text-align: center;
+  font-weight: 700;
+  color: transparent;
+  transition: color 160ms ease;
+}
+
+/* correct */
+.option-correct {
+  background: linear-gradient(180deg, rgba(236,253,245,1), rgba(240,255,247,1));
+  border-color: rgba(16,185,129,0.16);
+  box-shadow: 0 14px 36px rgba(16,185,129,0.06);
+}
+.option-correct .opt-check { color: var(--success); }
+
+/* wrong */
+.option-wrong {
+  background: linear-gradient(180deg, rgba(255,241,242,1), rgba(255,246,247,1));
+  border-color: rgba(239,68,68,0.12);
+  box-shadow: 0 12px 28px rgba(239,68,68,0.04);
+}
+.option-wrong .opt-check { color: var(--danger); }
+
+/* Result screen */
+.result-screen {
+  display:flex;
+  flex-direction:column;
+  gap: 12px;
+  align-items: center;
+  justify-content:center;
+  padding: 28px;
+}
+.result-illustration {
+  font-size: 42px;
+}
+.result-heading {
+  margin:0;
+  font-size: 22px;
+  color: #0b2540;
+  font-weight: 800;
+}
+.result-text { color: var(--muted); }
+.result-strong { font-weight: 800; color: var(--accent-dark); }
+
+/* Buttons */
+.btn {
+  border: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+  color: white;
+  box-shadow: 0 10px 28px rgba(84,123,255,0.14);
+}
+.btn-ghost {
+  background: transparent;
+  color: #0b2540;
+  border: 1px solid rgba(11,28,50,0.06);
+}
+
+/* Footer */
+.decor-footer {
+  margin-top: 18px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 720px) {
+  .options-grid { grid-template-columns: 1fr; }
+  .decor-container { padding: 16px; border-radius: 14px; }
+  .logo-badge { min-width: 48px; min-height: 48px; font-size: 16px; border-radius: 10px; }
+}
+
+/* FORM CARD */
+.start-form-card {
+  padding: 24px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #ffffff, #f2f7ff);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-title {
+  margin: 0 0 16px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #072340;
+}
+
+.form-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.form-label {
+  text-align: left;
+  font-weight: 600;
+  color: #1f2a44;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.12);
+  outline: none;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.form-input:focus {
+  border-color: #5b9cff;
+  box-shadow: 0 0 0 3px rgba(91,156,255,0.2);
+}
+
+/* ResultCard small styles */
+.result-screen { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,255,0.95)); border-radius: 14px; padding: 18px; border: 1px solid rgba(11,28,50,0.04); box-shadow: 0 10px 28px rgba(15,23,42,0.06); }
+.result-box { background: #fff; padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(11,28,50,0.04); display:flex; flex-direction:column; gap:6px; }
+.result-box-label { font-size: 12px; color: #6b7280; }
+.result-box-value { font-size: 15px; font-weight:700; color: #071a2b; }
+
+/* reuse button styles from earlier - ensure these exist in your file */
+.btn { border: none; padding: 10px 14px; border-radius: 12px; cursor: pointer; font-weight: 700; transition: transform 140ms ease, box-shadow 140ms ease; }
+.btn-primary { background: linear-gradient(90deg, #5b9cff, #2b6ef6); color: white; box-shadow: 0 10px 28px rgba(84,123,255,0.14); }
+.btn-ghost { background: transparent; color: #0b2540; border: 1px solid rgba(11,28,50,0.06); }
